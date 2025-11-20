@@ -17,6 +17,9 @@
             --text-light: #e0e0e0;
             --transition: all 0.3s ease;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --panel: rgba(255,255,255,0.04);
+            --muted: rgba(255,255,255,0.6);
+            --radius: 10px;
         }
 
         * {
@@ -33,7 +36,112 @@
             line-height: 1.6;
         }
 
-        /* Accessibility Improvements */
+        /* Admin Panel Styles */
+        .admin-panel {
+            background: var(--dark-color);
+            padding: 2rem 5%;
+            display: none;
+        }
+
+        .admin-card {
+            background: var(--panel);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        }
+
+        .admin-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--muted);
+        }
+
+        .admin-input, .admin-select, .admin-textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-light);
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .admin-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .admin-btn {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .admin-btn.ghost {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .progress {
+            height: 8px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress > i {
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.15s linear;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .token-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .notice {
+            background: rgba(138,43,226,0.06);
+            border-left: 4px solid var(--primary-color);
+            padding: 0.8rem;
+            border-radius: 6px;
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Rest of the existing styles from the second file */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -46,7 +154,6 @@
             border: 0;
         }
 
-        /* Focus styles for keyboard navigation */
         button:focus-visible,
         a:focus-visible,
         input:focus-visible,
@@ -55,7 +162,6 @@
             outline-offset: 2px;
         }
 
-        /* Skip to main content link */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -73,7 +179,6 @@
             top: 0;
         }
 
-        /* Header Styles */
         header {
             position: fixed;
             top: 0;
@@ -153,7 +258,6 @@
             color: var(--text-light);
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -214,7 +318,6 @@
             box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
         }
 
-        /* Section Styles */
         section {
             padding: 5rem 5%;
         }
@@ -238,7 +341,6 @@
             border-radius: 2px;
         }
 
-        /* Music Section */
         .music-section {
             background-color: var(--gray-color);
         }
@@ -330,7 +432,6 @@
             color: white;
         }
 
-        /* Advanced Music Player */
         .music-player {
             position: fixed;
             bottom: 0;
@@ -406,7 +507,6 @@
             min-width: 40px;
         }
 
-        /* Video Section */
         .video-section {
             background-color: var(--dark-color);
         }
@@ -484,7 +584,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Upload Section */
         .upload-section {
             display: none;
             background-color: var(--dark-color);
@@ -522,7 +621,6 @@
             border-color: var(--primary-color);
         }
 
-        /* About Section */
         .about-content {
             display: flex;
             flex-wrap: wrap;
@@ -578,7 +676,6 @@
             transform: translateY(-3px);
         }
 
-        /* Newsletter Section */
         .newsletter-section {
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             padding: 4rem 5%;
@@ -619,7 +716,6 @@
             outline: 2px solid var(--dark-color);
         }
 
-        /* Contact Section */
         .contact-content {
             display: flex;
             flex-wrap: wrap;
@@ -654,7 +750,6 @@
             font-size: 1.2rem;
         }
 
-        /* Footer */
         footer {
             background-color: #0a0a0a;
             padding: 3rem 5% 1.5rem;
@@ -704,7 +799,6 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -729,7 +823,6 @@
             animation: float 5s ease-in-out infinite;
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -764,7 +857,6 @@
             cursor: pointer;
         }
 
-        /* Video Modal */
         .video-modal .modal-content {
             max-width: 800px;
             padding: 0;
@@ -775,7 +867,7 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
         }
 
         .video-container iframe {
@@ -787,7 +879,6 @@
             border-radius: 10px;
         }
 
-        /* Responsive Styles */
         @media (max-width: 768px) {
             nav ul {
                 position: fixed;
@@ -835,9 +926,13 @@
             .progress-container {
                 width: 100%;
             }
+
+            .token-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
         }
 
-        /* Theme Toggle */
         .theme-toggle {
             position: fixed;
             bottom: 20px;
@@ -856,7 +951,6 @@
             color: white;
         }
 
-        /* Light Theme */
         body.light-theme {
             --dark-color: #f8f9fa;
             --light-color: #121212;
@@ -914,7 +1008,6 @@
             background-color: rgba(0, 0, 0, 0.2);
         }
 
-        /* Animated Background */
         .animated-bg {
             position: absolute;
             top: 0;
@@ -1023,7 +1116,6 @@
             }
         }
 
-        /* Loading Animation */
         .loading {
             display: inline-block;
             width: 20px;
@@ -1053,6 +1145,7 @@
                 <li><a href="#videos">Videos</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#" id="admin-link">Admin</a></li>
             </ul>
             <button class="mobile-menu" id="mobile-menu" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
@@ -1140,6 +1233,71 @@
             </div>
         </section>
 
+        <!-- Admin Panel -->
+        <section class="admin-panel" id="admin">
+            <h2 class="section-title">Admin — Upload & Manage Tracks</h2>
+
+            <div class="admin-card">
+                <div class="token-row">
+                    <input id="admin-token-input" type="password" placeholder="Enter ADMIN token (or use site auth)" style="flex:1;" />
+                    <button id="save-token" class="admin-btn ghost">Set Token</button>
+                    <button id="clear-token" class="admin-btn ghost">Clear</button>
+                </div>
+                <div class="notice">
+                    This admin page uses a simple token prompt for demo/testing. In production, replace this with your site auth (httpOnly cookie/session). Ensure CORS and S3 CORS are configured for presigned uploads.
+                </div>
+
+                <form id="upload-form">
+                    <label for="title" class="admin-label">Title *</label>
+                    <input id="title" type="text" class="admin-input" required placeholder="Song title" />
+
+                    <label for="artist" class="admin-label">Artist *</label>
+                    <input id="artist" type="text" class="admin-input" required placeholder="Artist name" />
+
+                    <label for="album" class="admin-label">Album</label>
+                    <input id="album" type="text" class="admin-input" placeholder="Album name (optional)" />
+
+                    <label for="genre" class="admin-label">Genre</label>
+                    <select id="genre" class="admin-select">
+                        <option value="">Select (optional)</option>
+                        <option value="electronic">Electronic</option>
+                        <option value="ambient">Ambient</option>
+                        <option value="downtempo">Downtempo</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="file" class="admin-label">Audio file (mp3, wav, flac) *</label>
+                    <input id="file" type="file" class="admin-input" accept="audio/*" required />
+
+                    <label for="cover" class="admin-label">Cover image (optional)</label>
+                    <input id="cover" type="file" class="admin-input" accept="image/*" />
+
+                    <div class="admin-row">
+                        <label style="display:flex;align-items:center;gap:8px;">
+                            <input id="publish" type="checkbox" /> <span style="color: var(--muted); font-size: 0.9rem;"> Publish now</span>
+                        </label>
+                        <div style="flex:1"></div>
+                        <button id="upload-btn" class="admin-btn" type="submit">Upload track</button>
+                    </div>
+
+                    <div id="upload-status" style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;"></div>
+                    <div class="progress hidden" id="upload-progress"><i></i></div>
+                </form>
+            </div>
+
+            <div class="admin-card">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <h3 style="margin:0">Tracks</h3>
+                    <div>
+                        <button id="refresh-list" class="admin-btn ghost">Refresh</button>
+                        <button id="show-upload-section" class="admin-btn ghost">Scroll to upload</button>
+                    </div>
+                </div>
+
+                <div id="tracks-container" style="color: var(--muted); font-size: 0.9rem;">Loading…</div>
+            </div>
+        </section>
+
         <!-- Newsletter Section -->
         <section class="newsletter-section">
             <div class="newsletter-content">
@@ -1150,31 +1308,6 @@
                     <button type="submit" class="btn">Subscribe</button>
                 </form>
             </div>
-        </section>
-
-        <!-- Upload Section (Admin Only) -->
-        <section class="upload-section" id="upload">
-            <h2 class="section-title">Upload New Track</h2>
-            <form class="upload-form">
-                <div class="form-group">
-                    <label for="song-title">Song Title</label>
-                    <input type="text" id="song-title" required>
-                </div>
-                <div class="form-group">
-                    <label for="song-file">Upload File</label>
-                    <input type="file" id="song-file" accept="audio/*" required>
-                </div>
-                <div class="form-group">
-                    <label for="song-genre">Genre</label>
-                    <select id="song-genre">
-                        <option value="electronic">Electronic</option>
-                        <option value="ambient">Ambient</option>
-                        <option value="downtempo">Downtempo</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn">Upload Song</button>
-            </form>
         </section>
 
         <!-- About Section -->
@@ -1333,6 +1466,10 @@
     </button>
 
     <script>
+        // Configuration
+        const API_BASE = ''; // leave empty if same origin, or set to e.g. 'https://api.yoursite.com'
+        const ADMIN_TOKEN_STORAGE_KEY = 'anoka_admin_token';
+
         // Sample song data
         const songs = [
             { 
@@ -1422,7 +1559,6 @@
         const songList = document.querySelector('.song-list');
         const filterBtns = document.querySelectorAll('.filter-btn');
         const themeToggle = document.getElementById('theme-toggle');
-        const uploadForm = document.querySelector('.upload-form');
         const contactForm = document.querySelector('.contact-form');
         const newsletterForm = document.querySelector('.newsletter-form');
         const musicPlayer = document.getElementById('music-player');
@@ -1439,11 +1575,32 @@
         const videoIframe = document.getElementById('video-iframe');
         const closeVideoModal = document.getElementById('close-video-modal');
         const videoPlayButtons = document.querySelectorAll('.video-play');
+        const adminLink = document.getElementById('admin-link');
+        const adminPanel = document.getElementById('admin');
 
         // Audio player state
         const audio = new Audio();
         let isPlaying = false;
         let currentSongIndex = 0;
+
+        // Admin Functions
+        function getAuthHeaders() {
+            const token = sessionStorage.getItem(ADMIN_TOKEN_STORAGE_KEY) || localStorage.getItem(ADMIN_TOKEN_STORAGE_KEY);
+            return token ? { 'Authorization': `Bearer ${token}` } : {};
+        }
+
+        function setStatus(msg, isError = false) {
+            const el = document.getElementById('upload-status');
+            el.textContent = msg || '';
+            el.style.color = isError ? '#ff6b6b' : '';
+        }
+
+        function setProgress(pct) {
+            const pr = document.getElementById('upload-progress');
+            pr.classList.remove('hidden');
+            pr.querySelector('i').style.width = pct + '%';
+            if (pct >= 100) setTimeout(() => pr.classList.add('hidden'), 700);
+        }
 
         // Mobile Menu Toggle
         mobileMenu.addEventListener('click', () => {
@@ -1473,7 +1630,323 @@
             }
         });
 
-        // Render Songs
+        // Admin Panel Toggle
+        adminLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            adminPanel.style.display = adminPanel.style.display === 'block' ? 'none' : 'block';
+            if (adminPanel.style.display === 'block') {
+                adminPanel.scrollIntoView({ behavior: 'smooth' });
+                loadTracks();
+            }
+        });
+
+        // Init UI state for admin
+        document.getElementById('save-token').addEventListener('click', () => {
+            const v = (document.getElementById('admin-token-input')).value.trim();
+            if (!v) { alert('Enter token'); return; }
+            sessionStorage.setItem(ADMIN_TOKEN_STORAGE_KEY, v);
+            setStatus('Admin token set (in session).');
+        });
+        document.getElementById('clear-token').addEventListener('click', () => {
+            sessionStorage.removeItem(ADMIN_TOKEN_STORAGE_KEY);
+            localStorage.removeItem(ADMIN_TOKEN_STORAGE_KEY);
+            document.getElementById('admin-token-input').value = '';
+            setStatus('Admin token cleared.');
+        });
+
+        // Scroll helper for admin
+        document.getElementById('show-upload-section').addEventListener('click', () => {
+            document.getElementById('upload-form').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('title').focus();
+        });
+
+        // Upload flow for admin
+        document.getElementById('upload-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            setStatus('');
+            setProgress(0);
+
+            const title = document.getElementById('title').value.trim();
+            const artist = document.getElementById('artist').value.trim();
+            const album = document.getElementById('album').value.trim();
+            const genre = document.getElementById('genre').value;
+            const fileInput = document.getElementById('file');
+            const coverInput = document.getElementById('cover');
+            const publish = document.getElementById('publish').checked;
+
+            if (!fileInput.files || fileInput.files.length === 0) {
+                setStatus('Please choose an audio file', true); return;
+            }
+            if (!title || !artist) {
+                setStatus('Title and artist are required', true); return;
+            }
+
+            const audioFile = fileInput.files[0];
+            const coverFile = coverInput.files && coverInput.files.length ? coverInput.files[0] : null;
+
+            try {
+                document.getElementById('upload-btn').disabled = true;
+                setStatus('Initializing upload...');
+
+                // 1) Init audio upload
+                const initAudioRes = await fetch(API_BASE + '/api/admin/tracks/init-upload', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...getAuthHeaders()
+                    },
+                    body: JSON.stringify({
+                        filename: audioFile.name,
+                        contentType: audioFile.type || 'application/octet-stream',
+                        size: audioFile.size,
+                        purpose: 'audio'
+                    })
+                });
+                if (!initAudioRes.ok) {
+                    const txt = await initAudioRes.text();
+                    throw new Error('init-upload audio failed: ' + txt);
+                }
+                const initAudio = await initAudioRes.json();
+
+                // 2) (optional) init cover upload
+                let coverKey = null;
+                if (coverFile) {
+                    setStatus('Initializing cover upload...');
+                    const initCoverRes = await fetch(API_BASE + '/api/admin/tracks/init-upload', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...getAuthHeaders()
+                        },
+                        body: JSON.stringify({
+                            filename: coverFile.name,
+                            contentType: coverFile.type || 'image/jpeg',
+                            size: coverFile.size,
+                            purpose: 'cover'
+                        })
+                    });
+                    if (!initCoverRes.ok) {
+                        const txt = await initCoverRes.text();
+                        throw new Error('init-upload cover failed: ' + txt);
+                    }
+                    const initCover = await initCoverRes.json();
+                    coverKey = initCover.key;
+
+                    // upload cover to presigned URL
+                    setStatus('Uploading cover...');
+                    await uploadToPresigned(initCover.uploadUrl, coverFile, (p) => {
+                        // small mapping for UI: 0..20%
+                        setProgress(Math.round(p * 0.2));
+                    });
+                }
+
+                // 3) upload audio to presigned URL
+                setStatus('Uploading audio file...');
+                await uploadToPresigned(initAudio.uploadUrl, audioFile, (p) => {
+                    // map to 20..100%
+                    setProgress(20 + Math.round(p * 0.8));
+                });
+
+                // 4) create track metadata
+                setStatus('Finalizing metadata...');
+                const createRes = await fetch(API_BASE + '/api/admin/tracks', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...getAuthHeaders()
+                    },
+                    body: JSON.stringify({
+                        key: initAudio.key,
+                        title,
+                        artist,
+                        album: album || undefined,
+                        genre: genre || undefined,
+                        published: publish,
+                        coverKey: coverKey,
+                        file_size: audioFile.size,
+                        mime_type: audioFile.type
+                    })
+                });
+                if (!createRes.ok) {
+                    const txt = await createRes.text();
+                    throw new Error('create track failed: ' + txt);
+                }
+                const created = await createRes.json();
+                setProgress(100);
+                setStatus('Upload complete — track created: ' + (created.title || created.id));
+                // reset form (keep token)
+                document.getElementById('upload-form').reset();
+                // refresh list
+                await loadTracks();
+            } catch (err) {
+                console.error(err);
+                setStatus('Error: ' + (err.message || err), true);
+            } finally {
+                document.getElementById('upload-btn').disabled = false;
+            }
+        });
+
+        // Helper: upload via XMLHttpRequest to show progress (presigned PUT)
+        function uploadToPresigned(uploadUrl, file, onProgress) {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('PUT', uploadUrl, true);
+                // Some S3 setups require Content-Type header to match; set it
+                if (file.type) xhr.setRequestHeader('Content-Type', file.type);
+                xhr.upload.onprogress = (e) => {
+                    if (e.lengthComputable) {
+                        const pct = Math.round((e.loaded / e.total) * 100);
+                        onProgress && onProgress(pct);
+                    }
+                };
+                xhr.onload = () => {
+                    if (xhr.status >= 200 && xhr.status < 300) resolve();
+                    else reject(new Error('Upload failed: ' + xhr.status + ' ' + xhr.statusText));
+                };
+                xhr.onerror = () => reject(new Error('Network error during upload'));
+                xhr.send(file);
+            });
+        }
+
+        // Tracks list + actions for admin
+        async function loadTracks() {
+            const container = document.getElementById('tracks-container');
+            container.textContent = 'Loading…';
+            try {
+                const res = await fetch(API_BASE + '/api/admin/tracks', {
+                    headers: { ...getAuthHeaders() }
+                });
+                if (!res.ok) {
+                    const txt = await res.text();
+                    container.innerHTML = '<div style="color: var(--muted); font-size: 0.9rem;">Failed to load: ' + txt + '</div>';
+                    return;
+                }
+                const data = await res.json();
+                const tracks = data.tracks || data;
+                if (!tracks || tracks.length === 0) {
+                    container.innerHTML = '<div style="color: var(--muted); font-size: 0.9rem;">No tracks yet.</div>';
+                    return;
+                }
+
+                // build table
+                let html = '<table class="admin-table"><thead><tr><th>Title</th><th>Artist</th><th>Published</th><th>Downloads</th><th style="font-size: 0.85rem;">Actions</th></tr></thead><tbody>';
+                for (const t of tracks) {
+                    html += `<tr data-id="${t.id}">
+                        <td><strong>${escapeHtml(t.title)}</strong><div style="font-size: 0.85rem; color: var(--muted);">${escapeHtml(t.album||'')}</div></td>
+                        <td>${escapeHtml(t.artist)}</td>
+                        <td><input type="checkbox" class="pub-toggle" ${t.published ? 'checked' : ''}></td>
+                        <td style="font-size: 0.85rem; color: var(--muted);">${t.download_count||0}</td>
+                        <td class="actions">
+                            <button class="admin-btn ghost download">Download</button>
+                            <button class="admin-btn ghost edit">Edit</button>
+                            <button class="admin-btn danger delete" style="background: #ff4d4f;">Delete</button>
+                        </td>
+                    </tr>`;
+                }
+                html += '</tbody></table>';
+                container.innerHTML = html;
+
+                // wire actions
+                container.querySelectorAll('button.download').forEach(btn => btn.addEventListener('click', handleDownload));
+                container.querySelectorAll('button.delete').forEach(btn => btn.addEventListener('click', handleDelete));
+                container.querySelectorAll('button.edit').forEach(btn => btn.addEventListener('click', handleEdit));
+                container.querySelectorAll('.pub-toggle').forEach(cb => cb.addEventListener('change', handlePublishToggle));
+            } catch (err) {
+                console.error(err);
+                document.getElementById('tracks-container').innerHTML = '<div style="color: var(--muted); font-size: 0.9rem;">Error loading tracks</div>';
+            }
+        }
+
+        // Actions implementations for admin
+        async function handleDownload(e) {
+            const tr = e.target.closest('tr');
+            const id = tr.getAttribute('data-id');
+            try {
+                const res = await fetch(API_BASE + '/api/tracks/' + encodeURIComponent(id) + '/download');
+                if (!res.ok) {
+                    const txt = await res.text();
+                    alert('Failed to get download URL: ' + txt);
+                    return;
+                }
+                const { url } = await res.json();
+                window.open(url, '_blank');
+            } catch (err) {
+                console.error(err);
+                alert('Download failed: ' + err.message);
+            }
+        }
+
+        async function handleDelete(e) {
+            const tr = e.target.closest('tr');
+            const id = tr.getAttribute('data-id');
+            if (!confirm('Delete this track? This cannot be undone.')) return;
+            try {
+                const res = await fetch(API_BASE + '/api/admin/tracks/' + encodeURIComponent(id), {
+                    method: 'DELETE',
+                    headers: { ...getAuthHeaders() }
+                });
+                if (!res.ok) {
+                    const txt = await res.text();
+                    alert('Delete failed: ' + txt);
+                    return;
+                }
+                await loadTracks();
+            } catch (err) {
+                console.error(err);
+                alert('Delete error: ' + err.message);
+            }
+        }
+
+        async function handleEdit(e) {
+            const tr = e.target.closest('tr');
+            const id = tr.getAttribute('data-id');
+            // Very small inline edit prompt for quick changes
+            const newTitle = prompt('New title (leave blank to keep):', tr.querySelector('td > strong').textContent);
+            if (newTitle === null) return; // cancelled
+            try {
+                const res = await fetch(API_BASE + '/api/admin/tracks/' + encodeURIComponent(id), {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
+                    body: JSON.stringify({ title: newTitle })
+                });
+                if (!res.ok) {
+                    const txt = await res.text();
+                    alert('Update failed: ' + txt);
+                    return;
+                }
+                await loadTracks();
+            } catch (err) {
+                console.error(err);
+                alert('Update error: ' + err.message);
+            }
+        }
+
+        async function handlePublishToggle(e) {
+            const tr = e.target.closest('tr');
+            const id = tr.getAttribute('data-id');
+            const publish = e.target.checked;
+            try {
+                const res = await fetch(API_BASE + '/api/admin/tracks/' + encodeURIComponent(id), {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
+                    body: JSON.stringify({ published: publish })
+                });
+                if (!res.ok) {
+                    const txt = await res.text();
+                    alert('Publish toggle failed: ' + txt);
+                    await loadTracks();
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Publish error: ' + err.message);
+                await loadTracks();
+            }
+        }
+
+        // Refresh button for admin
+        document.getElementById('refresh-list').addEventListener('click', loadTracks);
+
+        // Render Songs for main site
         function renderSongs(filter = 'all') {
             songList.innerHTML = '';
             
@@ -1520,7 +1993,7 @@
             });
         }
 
-        // Filter Songs
+        // Filter Songs for main site
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 // Remove active class from all buttons
@@ -1533,7 +2006,7 @@
             });
         });
 
-        // Play Song
+        // Play Song for main site
         function playSong(index) {
             const song = songs[index];
             currentSongIndex = index;
@@ -1557,7 +2030,7 @@
             });
         }
 
-        // Update play button icon
+        // Update play button icon for main site
         function updatePlayButton() {
             const icon = playBtn.querySelector('i');
             if (isPlaying) {
@@ -1569,14 +2042,14 @@
             }
         }
 
-        // Format time (seconds to MM:SS)
+        // Format time (seconds to MM:SS) for main site
         function formatTime(seconds) {
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
-        // Update progress bar
+        // Update progress bar for main site
         audio.addEventListener('timeupdate', () => {
             const currentTime = audio.currentTime;
             const duration = audio.duration;
@@ -1591,14 +2064,14 @@
             currentTimeEl.textContent = formatTime(currentTime);
         });
 
-        // Seek functionality
+        // Seek functionality for main site
         progressBar.addEventListener('click', (e) => {
             const rect = progressBar.getBoundingClientRect();
             const percent = (e.clientX - rect.left) / rect.width;
             audio.currentTime = percent * audio.duration;
         });
 
-        // Play/Pause button
+        // Play/Pause button for main site
         playBtn.addEventListener('click', () => {
             if (isPlaying) {
                 audio.pause();
@@ -1609,13 +2082,13 @@
             updatePlayButton();
         });
 
-        // Previous button
+        // Previous button for main site
         prevBtn.addEventListener('click', () => {
             currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
             playSong(currentSongIndex);
         });
 
-        // Next button
+        // Next button for main site
         nextBtn.addEventListener('click', () => {
             currentSongIndex = (currentSongIndex + 1) % songs.length;
             playSong(currentSongIndex);
@@ -1628,24 +2101,14 @@
             playSong(currentSongIndex);
         });
 
-        // Download Song
+        // Download Song for main site
         function downloadSong(id) {
             const song = songs.find(s => s.id == id);
             alert(`Downloading: ${song.title}`);
             // In a real implementation, this would initiate a download
         }
 
-        // Upload Form Submission
-        uploadForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const title = document.getElementById('song-title').value;
-            const genre = document.getElementById('song-genre').value;
-            
-            alert(`Song "${title}" uploaded successfully!`);
-            uploadForm.reset();
-        });
-
-        // Contact Form Submission
+        // Contact Form Submission for main site
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('name').value;
@@ -1653,7 +2116,7 @@
             contactForm.reset();
         });
 
-        // Newsletter Form Submission
+        // Newsletter Form Submission for main site
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = newsletterForm.querySelector('input[type="email"]').value;
@@ -1661,7 +2124,7 @@
             newsletterForm.reset();
         });
 
-        // Theme Toggle
+        // Theme Toggle for main site
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-theme');
             const icon = themeToggle.querySelector('i');
@@ -1674,14 +2137,14 @@
             }
         });
 
-        // Check for saved theme preference
+        // Check for saved theme preference for main site
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.body.classList.add('light-theme');
             themeToggle.querySelector('i').className = 'fas fa-sun';
         }
 
-        // Video Play Functionality
+        // Video Play Functionality for main site
         videoPlayButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
                 const video = videos[index];
@@ -1691,14 +2154,14 @@
             });
         });
 
-        // Close Video Modal
+        // Close Video Modal for main site
         closeVideoModal.addEventListener('click', () => {
             videoModal.style.display = 'none';
             videoIframe.src = ''; // Stop video playback
             document.body.style.overflow = 'auto'; // Re-enable scrolling
         });
 
-        // Close modal when clicking outside
+        // Close modal when clicking outside for main site
         videoModal.addEventListener('click', (e) => {
             if (e.target === videoModal) {
                 videoModal.style.display = 'none';
@@ -1707,7 +2170,7 @@
             }
         });
 
-        // Smooth Scrolling
+        // Smooth Scrolling for main site
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1720,6 +2183,12 @@
                 }
             });
         });
+
+        // Utilities
+        function escapeHtml(s) {
+            if (!s) return '';
+            return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        }
 
         // Initialize
         renderSongs();
