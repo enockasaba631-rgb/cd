@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Test - Debug Version</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type="text"]:focus,
+        textarea:focus,
+        input[type="file"]:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+        }
+        button {
+            background: #d4af37;
+            color: #0a0a0a;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #f4e4a6;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+        .debug-info {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Song Upload Test</h1>
+        <p>Use this form to test the upload functionality and get detailed error messages.</p>
+
+        <form id="testUploadForm">
+            <div class="form-group">
+                <label for="songTitle">Song Title *</label>
+                <input type="text" id="songTitle" name="song-title" placeholder="e.g., Amazing Grace" required>
+            </div>
+
+            <div class="form-group">
+                <label for="songDescription">Description</label>
+                <textarea id="songDescription" name="song-description" placeholder="e.g., A powerful gospel song" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="audioFile">Audio File (MP3, WAV, OGG, FLAC, M4A) *</label>
+                <input type="file" id="audioFile" name="audio-file" accept="audio/*" required>
+                <small style="color: #999; margin-top: 5px; display: block;">Max size: 100MB | Supported: MP3, WAV, OGG, FLAC, M4A</small>
+            </div>
+
+            <div class="form-group">
+                <label for="coverImage">Cover Image (Optional)</label>
+                <input type="file" id="coverImage" name="song-image" accept="image/*">
+            </div>
+
+            <button type="submit">Upload Song</button>
+        </form>
+
+        <div id="status" class="status"></div>
+
+        <div class="debug-info" id="debugInfo" style="display: none;">
+            <strong>Debug Information:</strong>
+            <div id="debugContent"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('testUploadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const statusDiv = document.getElementById('status');
+            const debugDiv = document.getElementById('debugInfo');
+            const debugContent = document.getElementById('debugContent');
+
+            // Clear previous messages
+            statusDiv.className = 'status info';
+            statusDiv.textContent = '⏳ Uploading... Please wait...';
+            debugDiv.style.display = 'none';
+
+            try {
+                // Collect form data
+                const formData = new FormData(this);
+
+                // Log what we're sending
+                console.log('Form data keys:', Array.from(formData.keys()));
+                console.log('Song title:', formData.get('song-title'));
+                console.log('Audio file:', formData.get('audio-file'));
+
+                // Send to upload.php
+                const response = await fetch('upload.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                // Get the response text first to debug
+                const responseText = await response.text();
+                console.log('Raw response:', responseText);
+
+                // Try to parse as JSON
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch (e) {
+                    throw new Error('Invalid JSON response: ' + responseText);
+                }
+
+                // Handle the response
+                if (response.ok && data.status === 'success') {
+                    statusDiv.className = 'status success';
+                    statusDiv.innerHTML = `
+                        <strong>✅ Upload Successful!</strong><br>
+                        Song ID: ${data.song_id}<br>
+                        Title: ${data.title}<br>
+                        File: ${data.file_path}
+                    `;
+                    this.reset();
+
+                    // Refresh songs after 2 seconds
+                    setTimeout(() => {
+                        location.href = 'index.html#music';
+                    }, 2000);
+                } else {
+                    statusDiv.className = 'status error';
+                    statusDiv.innerHTML = `
+                        <strong>❌ Upload Failed</strong><br>
+                        ${data.message || 'Unknown error'}
+                    `;
+
+                    // Show debug info
+                    debugDiv.style.display = 'block';
+                    debugContent.innerHTML = `
+                        HTTP Status: ${response.status}<br>
+                        Response:<br>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = '❌ Error: ' + error.message;
+
+                debugDiv.style.display = 'block';
+                debugContent.innerHTML = `
+                    <strong>Exception:</strong><br>
+                    ${error.message}<br><br>
+                    <strong>Stack:</strong><br>
+                    ${error.stack}
+                `;
+                console.error('Upload error:', error);
+            }
+        });
+
+        // Show file details when selected
+        document.getElementById('audioFile').addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                console.log('Selected file:', file.name, `(${sizeMB} MB)`);
+            }
+        });
+    </script>
+</body>
+</html>

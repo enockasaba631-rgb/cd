@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Quick Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #fff;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #d4af37;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+        .credentials {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .credentials h2 {
+            color: #22c55e;
+            margin-bottom: 15px;
+        }
+        .cred-box {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+        }
+        .cred-label {
+            color: #999;
+            font-size: 12px;
+        }
+        .cred-value {
+            color: #22c55e;
+            font-weight: bold;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            padding: 25px;
+        }
+        .card h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+        .card-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            min-width: 30px;
+        }
+        .card-content {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+        .steps {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-left: 4px solid #d4af37;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .step {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .step:before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: #d4af37;
+            color: #0a0a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .quick-links {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid #3b82f6;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .quick-links h2 {
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+        .quick-links a {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .quick-links a:hover {
+            background: #60a5fa;
+            transform: translateY(-2px);
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #ccc;
+        }
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .button-primary {
+            display: inline-block;
+            background: #d4af37;
+            color: #0a0a0a;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        .button-primary:hover {
+            background: #f4e4a6;
+            transform: translateY(-2px);
+        }
+        .note {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid #fbbf24;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            color: #fcd34d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Admin Panel - Quick Start Guide</h1>
+
+        <div class="credentials">
+            <h2>Login Credentials</h2>
+            <div class="cred-box">
+                <div class="cred-label">Username</div>
+                <div class="cred-value">admin</div>
+            </div>
+            <div class="cred-box">
+                <div class="cred-label">Password</div>
+                <div class="cred-value">password</div>
+            </div>
+        </div>
+
+        <div class="quick-links">
+            <h2>📱 Quick Access</h2>
+            <p>Start using your admin panel:</p>
+            <a href="http://127.0.0.1:5501/index.html" target="_blank">🌐 Go to Website</a>
+            <a href="upload_debug.html" target="_blank">🧪 Test Upload</a>
+            <a href="ADMIN_GUIDE.md" target="_blank">📖 Full Guide</a>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3><span class="card-icon">📊</span>Dashboard</h3>
+                <div class="card-content">
+                    <p><strong>See your library overview:</strong></p>
+                    <ul class="feature-list">
+                        <li>Total songs uploaded</li>
+                        <li>Total downloads</li>
+                        <li>Listener estimates</li>
+                        <li>Recent activity log</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="card-icon">📝</span>Manage Songs</h3>
+                <div class="card-content">
+                    <p><strong>Control your music library:</strong></p>
+                    <ul class="feature-list">
+                        <li>View all uploaded songs</li>
+                        <li>See song details</li>
+                        <li>Track download counts</li>
+                        <li>Delete songs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="card-icon">⬆️</span>Upload Song</h3>
+                <div class="card-content">
+                    <p><strong>Add new gospel music:</strong></p>
+                    <ul class="feature-list">
+                        <li>Enter song title</li>
+                        <li>Add description</li>
+                        <li>Upload MP3 file</li>
+                        <li>Optional cover image</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="card-icon">📈</span>Statistics</h3>
+                <div class="card-content">
+                    <p><strong>Analyze download trends:</strong></p>
+                    <ul class="feature-list">
+                        <li>View all song stats</li>
+                        <li>See top 3 songs</li>
+                        <li>Download analytics</li>
+                        <li>Monthly comparisons</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="border-color: #22c55e;">
+            <h3 style="color: #22c55e;"><span class="card-icon">🚀</span>How to Get Started</h3>
+            <div class="card-content">
+                <div class="steps">
+                    <div class="step" data-step="1">
+                        <strong>Go to website:</strong> http://127.0.0.1:5501/index.html
+                    </div>
+                    <div class="step" data-step="2">
+                        <strong>Click Admin button</strong> in top navigation
+                    </div>
+                    <div class="step" data-step="3">
+                        <strong>Enter credentials:</strong> admin / password
+                    </div>
+                    <div class="step" data-step="4">
+                        <strong>Click Upload Song</strong> tab
+                    </div>
+                    <div class="step" data-step="5">
+                        <strong>Fill the form:</strong> Title, description, MP3 file
+                    </div>
+                    <div class="step" data-step="6">
+                        <strong>Click Upload</strong> and wait for success
+                    </div>
+                    <div class="step" data-step="7">
+                        <strong>See your song</strong> in Music section immediately!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>💡 Pro Tip:</strong> Statistics automatically update after you upload songs. Check the Dashboard tab to see real-time stats about your music library!
+        </div>
+
+        <div class="card">
+            <h3><span class="card-icon">✨</span>Admin Features</h3>
+            <div class="card-content">
+                <h4 style="color: #d4af37; margin-top: 15px; margin-bottom: 10px;">Dashboard Tab</h4>
+                <p>Shows overview stats and recent activity. Numbers update automatically based on uploads.</p>
+                
+                <h4 style="color: #d4af37; margin-top: 15px; margin-bottom: 10px;">Manage Songs Tab</h4>
+                <p>List of all songs with delete option. Click trash icon to remove a song.</p>
+                
+                <h4 style="color: #d4af37; margin-top: 15px; margin-bottom: 10px;">Upload Song Tab</h4>
+                <p>Complete upload form. Required: Title, Description, MP3 file. Optional: Cover image.</p>
+                
+                <h4 style="color: #d4af37; margin-top: 15px; margin-bottom: 10px;">Statistics Tab</h4>
+                <p>Analytics dashboard. Shows all songs, download counts, and top 3 popular songs.</p>
+            </div>
+        </div>
+
+        <div class="card" style="background: rgba(34, 197, 94, 0.1); border-color: #22c55e;">
+            <h3 style="color: #22c55e;"><span class="card-icon">✅</span>What's Working</h3>
+            <div class="card-content">
+                <ul class="feature-list">
+                    <li>Admin login with credentials</li>
+                    <li>Dashboard with real statistics</li>
+                    <li>Upload songs with validation</li>
+                    <li>Manage songs (view & delete)</li>
+                    <li>Statistics and analytics</li>
+                    <li>Automatic data refresh</li>
+                    <li>Download tracking</li>
+                    <li>Popular songs ranking</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px; color: #d4af37;">
+            <h2>Ready to Manage Your Music? 🎵</h2>
+            <p style="color: #ccc; margin: 15px 0;">Your admin panel is fully functional and ready to use!</p>
+            <a href="http://127.0.0.1:5501/index.html" class="button-primary">Go to Website</a>
+        </div>
+    </div>
+</body>
+</html>
